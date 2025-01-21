@@ -18,7 +18,7 @@ git clone https://github.com/evarioooo/ntfy-send.git
 ```
 Change directory to
 ```
-cd into ntfy-send
+cd ntfy-send
 ```
 
 In order to use this script from everywhere and type ntfy-send instead ./ntfy-send.sh add it to /usr/bin/ folder
