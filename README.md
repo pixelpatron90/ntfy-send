@@ -68,7 +68,7 @@ ntfy-send "custom_topic" "Titel" "Message" ---prio5
 Send message with tags:
 
 ```
----prio5 "Titel" "Message" ---prio5
+ntfy-send "Titel" "Message" ---tags=warning
 ```
 
 # Authors
