@@ -1,9 +1,9 @@
 #!/bin/bash
-USER=maralex_sys_user
-PASSWORD=zh9mgnySzzzztrrvvhshtt544445
+USER=<USER>
+PASSWORD=<PASSWORD>
 
-SERVER="https://ntfy.maralex.xyz"
-DEFAULT_TOPIC="srv01_maralex_xyz_notifications"PRIORITY
+SERVER="https://example.tld"
+DEFAULT_TOPIC="topic_default"
 
 PRIORITY=""
 TAGS=""
