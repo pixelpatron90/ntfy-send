@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# Nur echte SSH-Logins
 [ -z "$SSH_CONNECTION" ] && exit 0
+
+if [ -n "$NTFY_SENT" ]; then
+  exit 0
+fi
+export NTFY_SENT=1
 
 login_ip="$(echo "$SSH_CONNECTION" | awk '{print $1}')"
 login_port="$(echo "$SSH_CONNECTION" | awk '{print $2}')"
@@ -9,15 +13,14 @@ login_date="$(date +"%e %b %Y, %a %r")"
 login_user="$USER"
 hostname="$(hostname -s)"
 
-# Optional: localhost ignorieren
 if [[ "$login_ip" == "127.0.0.1" || "$login_ip" == "::1" ]]; then
   exit 0
 fi
 
-message=$'Neuer SSH Login auf '"$hostname"$'\n'
-message+=$'User: '"$login_user"$'\n'
-message+=$'IP: '"$login_ip"$'\n'
-message+=$'Port: '"$login_port"$'\n'
-message+=$'Zeit: '"$login_date"
+message="Neuer SSH Login auf $hostname"$'\n'
+message+="User: $login_user"$'\n'
+message+="IP: $login_ip"$'\n'
+message+="Port: $login_port"$'\n'
+message+="Zeit: $login_date"
 
 ntfy-send DEFAULT "SSH Login: $login_user@$hostname" "$message" --prio=5
