@@ -1,81 +1,105 @@
-# Table of contents
+# 🚀 ntfy-send
 
-* [About the project](#about-the-project)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Authors](#authors)
-* [License](#license)
+A simple but powerful ntfy CLI tool for sending notifications directly from your terminal.
 
-# About the project
+---
 
-A simple ntfy server addon.
+## 📚 Table of Contents
 
-# Installation
+- About the Project
+- Installation
+- Usage
+- Authors
+- License
 
-Clone this repo:
-```
+---
+
+## 📦 About the Project
+
+A lightweight ntfy addon that allows you to quickly and easily send notifications to your ntfy server directly from the shell.
+
+Perfect for:
+
+- 🔔 System notifications  
+- 🖥️ Server monitoring  
+- 🔐 SSH login alerts  
+- ⚙️ Automation & scripting  
+
+---
+
+## ⚙️ Installation
+
+### 🔽 Clone the repository
+
 git clone https://github.com/pixelpatron90/ntfy-send.git
-```
-Change directory to
-```
+
+### 📂 Change directory
+
 cd ntfy-send
-```
 
-In order to use this script from everywhere and type ntfy-send instead ./ntfy-send.sh add it to /usr/bin/ folder
+### 🚀 Make it available system-wide
 
-```
 mv ntfy-send.sh /usr/bin/ntfy-send
-```
 
-To run this script we should add permission
+### 🔐 Make it executable
 
-```
 chmod +x /usr/bin/ntfy-send
-```
 
-Owner of all files in /usr/bin is root user. So let’s do the same with our script:
+### 👑 Set ownership to root
 
-```
 chown root:root /usr/bin/ntfy-send
-```
 
-# Usage
+---
 
-Send message in default topic with hostname as title:
+## 💡 Usage
 
-```
+### 🔔 Send a message using the default topic (hostname as title)
+
 ntfy-send "Message"
-```
 
-Send message with own title:
+---
 
-```
+### 🏷️ Send a message with a custom title
+
 ntfy-send "Title" "Message"
-```
 
-Send message with highest prio. Available from low (1) to highest (5):
+---
 
-```
-ntfy-send DEFAULT "Titel" "Message" ---prio5
-```
+### 🚨 Send a message with highest priority (1 = low, 5 = high)
 
-Send message in custom topic with highest prio:
+ntfy-send DEFAULT "Title" "Message" --prio=5
 
-```
-ntfy-send "custom_topic" "Titel" "Message" ---prio5
-```
+---
 
-Send message with tags:
+### 🎯 Send a message to a custom topic with priority
 
-```
-ntfy-send "Titel" "Message" ---tags=warning
-```
+ntfy-send "custom_topic" "Title" "Message" --prio=5
 
-# Authors
+---
 
-* [evarioooo](https://github.com/evarioooo)
-* [justin](https://github.com/evarioooo)
+### 🏷️ Send a message with tags
 
-# License
+ntfy-send "Title" "Message" --tags=warning,server
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+---
+
+## 🔥 Optional (Bonus)
+
+You can use this tool for SSH login notifications:
+
+/etc/ssh/sshrc
+
+👉 This allows you to receive automatic alerts on every SSH login 🚀
+
+---
+
+## 👨‍💻 Authors
+
+- evarioooo
+- justin
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
