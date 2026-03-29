@@ -45,6 +45,18 @@ chown root:root /usr/bin/ntfy-send
 ntfy-send "Title" "Message"
 ```
 
+```
+ntfy-send DEFAULT "Titel" "Message" ---prio5
+```
+
+```
+ntfy-send "custom_topic" "Titel" "Message" ---prio5
+```
+
+```
+ntfy-send "Titel" "Message"
+```
+
 # Authors
 
 * [evarioooo](https://github.com/evarioooo)
