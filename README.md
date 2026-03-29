@@ -41,20 +41,34 @@ chown root:root /usr/bin/ntfy-send
 
 # Usage
 
+Send message in default topic with hostname as title:
+
+```
+ntfy-send "Message"
+```
+
+Send message with own title:
+
 ```
 ntfy-send "Title" "Message"
 ```
+
+Send message with highest prio. Available from low (1) to highest (5):
 
 ```
 ntfy-send DEFAULT "Titel" "Message" ---prio5
 ```
 
+Send message in custom topic with highest prio:
+
 ```
 ntfy-send "custom_topic" "Titel" "Message" ---prio5
 ```
 
+Send message with tags:
+
 ```
-ntfy-send "Titel" "Message"
+---prio5 "Titel" "Message" ---prio5
 ```
 
 # Authors
