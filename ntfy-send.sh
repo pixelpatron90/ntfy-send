@@ -72,7 +72,7 @@ case "$#" in
     exit 1
     ;;
 esac
-# Header vorbereiten
+
 CURL_HEADERS=()
 CURL_HEADERS+=(-H "Title: $TITLE")
 if [ -n "$PRIORITY" ]; then
