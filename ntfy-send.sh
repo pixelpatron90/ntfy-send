@@ -1,29 +1,84 @@
 #!/bin/bash
+USER=maralex_sys_user
+PASSWORD=zh9mgnySzzzztrrvvhshtt544445
 
-USER=<user>
-PASSWORD=<password>
+SERVER="https://ntfy.maralex.xyz"
+DEFAULT_TOPIC="srv01_maralex_xyz_notifications"PRIORITY
+PRIORITY=""
+TcaseIONAL=()
 
-# this 3 checks (if) are not necessary but should be convenient
-if [ "$1" == "-h" ]; then
-  echo "Usage: `basename $0` \"title" "text message\""
-  exit 0
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --prio=*)
+      PRIORITY="${1#--prio=}"
+      shift
+      ;;
+    --tags=*)
+      TAGS="${1#--tags=}"
+      shift
+      ;;
+    -h)
+      echo "Usage: $(basename $0) [topic|DEFAULT] [title] \"message\" [--prio=1-5] [--tags=a,b]"
+      exit 0
+      ;;
+    *)
+      POSITIONAL+=("$1")
+      shift
+      ;;
+  esac
+done
+
+set -- "${POSITIONAL[@]}"
+
+if [ "$#" -lt 1 ]; then
+  echo "You need at least a message."
+  exit 1
 fi
-
-if [ -z "$1" ]
-  then
-    echo "Add title text as first arguments"
-    exit 0
+HOSTNAME="$(hostname)"
+case "$#" in
+  1)
+    TOPIC="$DEFAULT_TOPIC"
+    TITLE="$HOSTNAME"
+    MESSAGE="$1"
+    ;;
+  2)
+    if [[ "${1^^}" == "DEFAULT" ]]; then
+      TOPIC="$DEFAULT_TOPIC"
+      TITLE="$HOSTNAME"
+      MESSAGE="$2"
+    else
+      TOPIC="$1"
+      TITLE="$HOSTNAME"
+      MESSAGE="$2"
+    fi
+    ;;
+  3)
+    if [[ "${1^^}" == "DEFAULT" ]]; then
+      TOPIC="$DEFAULT_TOPIC"
+      TITLE="$2"
+      MESSAGE="$3"
+    else
+      TOPIC="$1"
+      TITLE="$2"
+      MESSAGE="$3"
+    fi
+    ;;
+  *)
+    echo "Too many arguments."
+    exit 1
+    ;;
+esac
+# Header vorbereiten
+CURL_HEADERS=()
+CURL_HEADERS+=(-H "Title: $TITLE")
+if [ -n "$PRIORITY" ]; then
+  CURL_HEADERS+=(-H "X-Priority: $PRIORITY")
 fi
-
-if [ -z "$2" ]
-  then
-    echo "Add message text as second arguments"
-    exit 0
+if [ -n "$TAGS" ]; then
+  CURL_HEADERS+=(-H "X-Tags: $TAGS")
 fi
-
-if [ "$#" -ne 2 ]; then
-    echo "You can pass only two arguments."
-    exit 0
-fi
-
-curl -H "Title: $1" -u "$USER:$PASSWORD" -d "$2" <url-ntfy-server> > /dev/null 2>&1
+curl "${CURL_HEADERS[@]}" \
+     -u "$USER:$PASSWORD" \
+     -d "$MESSAGE" \
+     "$SERVER/$TOPIC" \
+     > /dev/null 2>&1
