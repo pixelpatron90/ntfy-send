@@ -14,7 +14,7 @@ A simple ntfy server addon.
 
 Clone this repo:
 ```
-git clone https://github.com/evarioooo/ntfy-send.git
+git clone https://github.com/pixelpatron90/ntfy-send.git
 ```
 Change directory to
 ```
