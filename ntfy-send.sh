@@ -38,7 +38,9 @@ if [ "$#" -lt 1 ]; then
   echo "You need at least a message."
   exit 1
 fi
+
 HOSTNAME="$(hostname)"
+
 case "$#" in
   1)
     TOPIC="$DEFAULT_TOPIC"
@@ -75,14 +77,17 @@ esac
 
 CURL_HEADERS=()
 CURL_HEADERS+=(-H "Title: $TITLE")
+
 if [ -n "$PRIORITY" ]; then
   CURL_HEADERS+=(-H "X-Priority: $PRIORITY")
 fi
+
 if [ -n "$TAGS" ]; then
   CURL_HEADERS+=(-H "X-Tags: $TAGS")
 fi
-curl "${CURL_HEADERS[@]}" \
+
+printf "%s" "$MESSAGE" | curl "${CURL_HEADERS[@]}" \
      -u "$USER:$PASSWORD" \
-     -d "$MESSAGE" \
+     --data-binary @- \
      "$SERVER/$TOPIC" \
      > /dev/null 2>&1
