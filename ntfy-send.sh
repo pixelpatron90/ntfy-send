@@ -1,4 +1,5 @@
 #!/bin/bash
+
 USER=<USER>
 PASSWORD=<PASSWORD>
 
