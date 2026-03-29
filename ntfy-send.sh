@@ -4,8 +4,11 @@ PASSWORD=zh9mgnySzzzztrrvvhshtt544445
 
 SERVER="https://ntfy.maralex.xyz"
 DEFAULT_TOPIC="srv01_maralex_xyz_notifications"PRIORITY
+
 PRIORITY=""
-TcaseIONAL=()
+TAGS=""
+
+POSITIONAL=()
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
