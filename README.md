@@ -48,6 +48,7 @@ cp ssh-login-notify.sh /usr/bin
 nano .env.example
 
 mkdir /etc/ntfy-send
+
 cp .env.example /etc/ntfy-send/.env
 
 ### 🔐 Make it executable
