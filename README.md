@@ -40,6 +40,7 @@ cd ntfy-send
 ### 🚀 Make it available system-wide
 
 cp ntfy-send.sh /usr/bin/ntfy-send
+cp ssh-login-notify.sh /usr/bin
 
 ### Edit your enviremont infos
 
@@ -51,10 +52,19 @@ cp .env.example /etc/ntfy-send/.env
 ### 🔐 Make it executable
 
 chmod +x /usr/bin/ntfy-send
+chmod +x ssh-login-notify.sh
 
 ### 👑 Set ownership to root
 
 chown root:root /usr/bin/ntfy-send
+
+### Add to ssh pam session
+
+nano /etc/pam.d/sshd
+
+Add the line at bottom:
+
+session optional pam_exec.so /usr/local/bin/ssh-login-notify.sh
 
 ---
 
