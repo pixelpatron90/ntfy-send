@@ -1,10 +1,13 @@
 #!/bin/bash
 
-USER=<USER>
-PASSWORD=<PASSWORD>
-
-SERVER="https://example.tld"
-DEFAULT_TOPIC="topic_default"
+if [ -f ".env" ]; then
+  set -a
+  source .env
+  set +a
+else
+  echo ".env file not found!"
+  exit 1
+fi
 
 PRIORITY=""
 TAGS=""
