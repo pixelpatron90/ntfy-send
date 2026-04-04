@@ -41,6 +41,10 @@ cd ntfy-send
 
 cp ntfy-send.sh /usr/bin/ntfy-send
 
+### Edit your enviremont infos
+
+cp .env.example /etc/ntfy-send/.env
+
 ### 🔐 Make it executable
 
 chmod +x /usr/bin/ntfy-send
