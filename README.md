@@ -39,7 +39,7 @@ cd ntfy-send
 
 ### 🚀 Make it available system-wide
 
-mv ntfy-send.sh /usr/bin/ntfy-send
+cp ntfy-send.sh /usr/bin/ntfy-send
 
 ### 🔐 Make it executable
 
