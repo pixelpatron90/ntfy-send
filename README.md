@@ -43,6 +43,9 @@ cp ntfy-send.sh /usr/bin/ntfy-send
 
 ### Edit your enviremont infos
 
+nano .env.example
+
+mkdir /etc/ntfy-send
 cp .env.example /etc/ntfy-send/.env
 
 ### 🔐 Make it executable
