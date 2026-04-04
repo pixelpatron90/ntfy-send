@@ -40,6 +40,7 @@ cd ntfy-send
 ### 🚀 Make it available system-wide
 
 cp ntfy-send.sh /usr/bin/ntfy-send
+
 cp ssh-login-notify.sh /usr/bin
 
 ### Edit your enviremont infos
