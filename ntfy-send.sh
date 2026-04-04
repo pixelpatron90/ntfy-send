@@ -1,11 +1,13 @@
 #!/bin/bash
 
-if [ -f ".env" ]; then
+ENV_FILE="/etc/ntfy-send/.env"
+
+if [ -f "$ENV_FILE" ]; then
   set -a
-  source .env
+  source "$ENV_FILE"
   set +a
 else
-  echo ".env file not found!"
+  echo "Env file not found: $ENV_FILE"
   exit 1
 fi
 
