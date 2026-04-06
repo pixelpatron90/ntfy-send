@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ENV_FILE="/etc/ntfy-send/.env"
+ENV_FILE="${NTFY_ENV_FILE:-/etc/ntfy-send/.env}"
 
 if [ -f "$ENV_FILE" ]; then
   set -a
@@ -18,22 +18,22 @@ POSITIONAL=()
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --prio=*)
-      PRIORITY="${1#--prio=}"
-      shift
-      ;;
-    --tags=*)
-      TAGS="${1#--tags=}"
-      shift
-      ;;
-    -h)
-      echo "Usage: $(basename $0) [topic|DEFAULT] [title] \"message\" [--prio=1-5] [--tags=a,b]"
-      exit 0
-      ;;
-    *)
-      POSITIONAL+=("$1")
-      shift
-      ;;
+  --prio=*)
+    PRIORITY="${1#--prio=}"
+    shift
+    ;;
+  --tags=*)
+    TAGS="${1#--tags=}"
+    shift
+    ;;
+  -h)
+    echo "Usage: $(basename $0) [topic|DEFAULT] [title] \"message\" [--prio=1-5] [--tags=a,b]"
+    exit 0
+    ;;
+  *)
+    POSITIONAL+=("$1")
+    shift
+    ;;
   esac
 done
 
@@ -47,37 +47,37 @@ fi
 HOSTNAME="$(hostname)"
 
 case "$#" in
-  1)
+1)
+  TOPIC="$DEFAULT_TOPIC"
+  TITLE="$HOSTNAME"
+  MESSAGE="$1"
+  ;;
+2)
+  if [[ "${1^^}" == "DEFAULT" ]]; then
     TOPIC="$DEFAULT_TOPIC"
     TITLE="$HOSTNAME"
-    MESSAGE="$1"
-    ;;
-  2)
-    if [[ "${1^^}" == "DEFAULT" ]]; then
-      TOPIC="$DEFAULT_TOPIC"
-      TITLE="$HOSTNAME"
-      MESSAGE="$2"
-    else
-      TOPIC="$1"
-      TITLE="$HOSTNAME"
-      MESSAGE="$2"
-    fi
-    ;;
-  3)
-    if [[ "${1^^}" == "DEFAULT" ]]; then
-      TOPIC="$DEFAULT_TOPIC"
-      TITLE="$2"
-      MESSAGE="$3"
-    else
-      TOPIC="$1"
-      TITLE="$2"
-      MESSAGE="$3"
-    fi
-    ;;
-  *)
-    echo "Too many arguments."
-    exit 1
-    ;;
+    MESSAGE="$2"
+  else
+    TOPIC="$1"
+    TITLE="$HOSTNAME"
+    MESSAGE="$2"
+  fi
+  ;;
+3)
+  if [[ "${1^^}" == "DEFAULT" ]]; then
+    TOPIC="$DEFAULT_TOPIC"
+    TITLE="$2"
+    MESSAGE="$3"
+  else
+    TOPIC="$1"
+    TITLE="$2"
+    MESSAGE="$3"
+  fi
+  ;;
+*)
+  echo "Too many arguments."
+  exit 1
+  ;;
 esac
 
 CURL_HEADERS=()
@@ -92,7 +92,7 @@ if [ -n "$TAGS" ]; then
 fi
 
 printf "%s" "$MESSAGE" | curl "${CURL_HEADERS[@]}" \
-     -u "$USER:$PASSWORD" \
-     --data-binary @- \
-     "$SERVER/$TOPIC" \
-     > /dev/null 2>&1
+  -u "$USER:$PASSWORD" \
+  --data-binary @- \
+  "$SERVER/$TOPIC" \
+  >/dev/null 2>&1
