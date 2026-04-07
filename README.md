@@ -1,3 +1,12 @@
+# Table of contents
+
+* [Preface](#preface)
+* [About this repo](#about-this-repo)
+* [Installation](#installation)
+* [Quick Overview](#quick-overview)
+* [Authors](#authors)
+* [License](#license)
+
 # 🚀 ntfy-send
 
 A simple but powerful ntfy CLI tool for sending notifications directly from your terminal.
