@@ -1,16 +1,4 @@
 # Table of contents
-<<<<<<< HEAD
-
-* [Preface](#preface)
-* [About this repo](#about-this-repo)
-* [Installation](#installation)
-* [Quick Overview](#quick-overview)
-* [Authors](#authors)
-* [License](#license)
-
-# 🚀 ntfy-send
-=======
->>>>>>> a44f4c4 (Update Readme.md)
 
 * [Preface](#preface)
 * [About this repo](#about-this-repo)
