@@ -4,6 +4,7 @@
 * [About this repo](#about-this-repo)
 * [Quick Overview](#quick-overview)
 * [Installation](#installation)
+* [Usage](#usage)
 * [Authors](#authors)
 * [License](#license)
 
@@ -67,6 +68,9 @@ nano /etc/pam.d/sshd
 Add the line at bottom:
 
 session optional pam_exec.so /usr/bin/ssh-login-notify.sh
+
+# Usage
+--
 
 # Authors
 
