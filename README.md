@@ -1,4 +1,5 @@
 # Table of contents
+<<<<<<< HEAD
 
 * [Preface](#preface)
 * [About this repo](#about-this-repo)
@@ -8,35 +9,34 @@
 * [License](#license)
 
 # 🚀 ntfy-send
+=======
+>>>>>>> a44f4c4 (Update Readme.md)
 
-A simple but powerful ntfy CLI tool for sending notifications directly from your terminal.
+* [Preface](#preface)
+* [About this repo](#about-this-repo)
+* [Quick Overview](#quick-overview)
+* [Installation](#installation)
+* [Authors](#authors)
+* [License](#license)
 
----
+# Preface
+--
 
-## 📚 Table of Contents
-
-- About the Project
-- Installation
-- Usage
-- Authors
-- License
-
----
-
-## 📦 About the Project
+# About this repo
 
 A lightweight ntfy addon that allows you to quickly and easily send notifications to your ntfy server directly from the shell.
 
 Perfect for:
 
-- 🔔 System notifications  
-- 🖥️ Server monitoring  
-- 🔐 SSH login alerts  
-- ⚙️ Automation & scripting  
+* - 🔔 System notifications  
+* - 🖥️ Server monitoring  
+* - 🔐 SSH login alerts  
+* - ⚙️ Automation & scripting  
 
----
+# Quick Overview
+--
 
-## ⚙️ Installation
+# Installation
 
 ### 🔽 Clone the repository
 
@@ -72,7 +72,7 @@ chmod +x ssh-login-notify.sh
 
 chown root:root /usr/bin/ntfy-send
 
-### Add to ssh pam session
+### BONUS: SSH login notifications
 
 nano /etc/pam.d/sshd
 
@@ -80,57 +80,9 @@ Add the line at bottom:
 
 session optional pam_exec.so /usr/bin/ssh-login-notify.sh
 
----
+# Authors
 
-## 💡 Usage
+* [maralexofficial](https://github.com/maralexofficial) (Author)
 
-### 🔔 Send a message using the default topic (hostname as title)
-
-ntfy-send "Message"
-
----
-
-### 🏷️ Send a message with a custom title
-
-ntfy-send "Title" "Message"
-
----
-
-### 🚨 Send a message with highest priority (1 = low, 5 = high)
-
-ntfy-send DEFAULT "Title" "Message" --prio=5
-
----
-
-### 🎯 Send a message to a custom topic with priority
-
-ntfy-send "custom_topic" "Title" "Message" --prio=5
-
----
-
-### 🏷️ Send a message with tags
-
-ntfy-send "Title" "Message" --tags=warning,server
-
----
-
-## 🔥 Optional (Bonus)
-
-You can use this tool for SSH login notifications:
-
-/etc/ssh/sshrc
-
-👉 This allows you to receive automatic alerts on every SSH login 🚀
-
----
-
-## 👨‍💻 Authors
-
-- evarioooo
-- justin
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
+# License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
