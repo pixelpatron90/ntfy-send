@@ -1,14 +1,17 @@
 #!/bin/bash
 
+HOST="$(hostname -s)"
+DATE="$(date '+%F %T')"
+
 case "$PAM_TYPE" in
     open_session)
-        TITLE="Login"
+        TITLE="$HOST | ssh | login"
         MESSAGE="$PAM_USER logged in (remote host: ${PAM_RHOST:-local})."
         TAGS="login,ssh"
         PRIO="3"
         ;;
     close_session)
-        TITLE="Logout"
+        TITLE="$HOST | ssh | logout"
         MESSAGE="$PAM_USER logged out (remote host: ${PAM_RHOST:-local})."
         TAGS="logout,ssh"
         PRIO="2"
