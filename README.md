@@ -43,7 +43,7 @@ cd ntfy-send
 
 ```
 cp ntfy-send.sh /usr/bin/ntfy-send
-cp ssh-login-notify.sh /usr/bin/ssh-login-notify.
+cp ssh-login-notify.sh /usr/bin/ssh-login-notify
 ```
 
 ### Edit your enviremont infos
