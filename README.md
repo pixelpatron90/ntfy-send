@@ -17,10 +17,10 @@ A lightweight ntfy addon that allows you to quickly and easily send notification
 
 Perfect for:
 
-* - 🔔 System notifications  
-* - 🖥️ Server monitoring  
-* - 🔐 SSH login alerts  
-* - ⚙️ Automation & scripting  
+* 🔔 System notifications  
+* 🖥️ Server monitoring  
+* 🔐 SSH login alerts  
+* ⚙️ Automation & scripting  
 
 # Quick Overview
 --
