@@ -29,7 +29,9 @@ Perfect for:
 
 ### 🔽 Clone the repository
 
-git clone https://github.com/pixelpatron90/ntfy-send.git
+```
+git clone https://github.com/maralexofficial/ntfy-send.git
+```
 
 ### 📂 Change directory
 
@@ -41,33 +43,44 @@ cd ntfy-send
 
 ```
 cp ntfy-send.sh /usr/bin/ntfy-send
-cp ssh-login-notify.sh /usr/bin
+cp ssh-login-notify.sh /usr/bin/ssh-login-notify.
 ```
 
 ### Edit your enviremont infos
 
-nano .env.example
-
+```
 mkdir /etc/ntfy-send
-
 cp .env.example /etc/ntfy-send/.env
+```
+
+```
+nano /etc/ntfy-send/.ENV
+```
 
 ### 🔐 Make it executable
 
+```
 chmod +x /usr/bin/ntfy-send
-chmod +x ssh-login-notify.sh
+chmod +x /usr/bin/ssh-login-notify.sh
+```
 
 ### 👑 Set ownership to root
 
+```
 chown root:root /usr/bin/ntfy-send
+```
 
 ### BONUS: SSH login notifications
 
+```
 nano /etc/pam.d/sshd
+```
 
 Add the line at bottom:
 
-session optional pam_exec.so /usr/bin/ssh-login-notify.sh
+```
+session optional pam_exec.so /usr/bin/ssh-login-notify
+```
 
 # Usage
 --
