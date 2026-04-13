@@ -13,6 +13,7 @@ fi
 
 PRIORITY=""
 TAGS=""
+TITLE=""
 
 POSITIONAL=()
 
@@ -44,22 +45,17 @@ if [ "$#" -lt 1 ]; then
   exit 1
 fi
 
-HOSTNAME="$(hostname)"
-
 case "$#" in
 1)
   TOPIC="$DEFAULT_TOPIC"
-  TITLE="$HOSTNAME"
   MESSAGE="$1"
   ;;
 2)
   if [[ "${1^^}" == "DEFAULT" ]]; then
     TOPIC="$DEFAULT_TOPIC"
-    TITLE="$HOSTNAME"
     MESSAGE="$2"
   else
     TOPIC="$1"
-    TITLE="$HOSTNAME"
     MESSAGE="$2"
   fi
   ;;
@@ -81,7 +77,10 @@ case "$#" in
 esac
 
 CURL_HEADERS=()
-CURL_HEADERS+=(-H "Title: $TITLE")
+
+if [ -n "$TITLE" ]; then
+  CURL_HEADERS+=(-H "Title: $TITLE")
+fi
 
 if [ -n "$PRIORITY" ]; then
   CURL_HEADERS+=(-H "X-Priority: $PRIORITY")

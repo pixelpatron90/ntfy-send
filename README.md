@@ -61,7 +61,7 @@ nano /etc/ntfy-send/.ENV
 
 ```
 chmod +x /usr/bin/ntfy-send
-chmod +x /usr/bin/ssh-login-notify.sh
+chmod +x /usr/bin/ssh-login-notify
 ```
 
 ### 👑 Set ownership to root
